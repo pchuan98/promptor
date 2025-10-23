@@ -1,0 +1,167 @@
+template:
+  id: project-spec-template-v1
+  name: 项目规范文档
+  version: 1.0
+  output:
+    format: markdown
+    filename: project.md
+    title: "{{project_name}} 项目规范文档"
+
+agent_config:
+  editable_sections:
+    - 元信息
+    - 严格遵循的规则
+    - 项目愿景
+    - 关键技术决策
+    - 项目结构
+    - 依赖库清单
+    - 常用命令
+
+sections:
+  - id: metadata
+    title: 元信息
+    type: frontmatter
+    instruction: 定义项目的基本元信息
+    owner: architect
+    editors: [architect, scrum-master]
+    fields:
+      - id: name
+        label: 项目名称
+        type: text
+        instruction: 项目的完整名称
+        required: true
+
+      - id: version
+        label: 版本号
+        type: text
+        instruction: 当前规范文档版本
+        default: "v1.0"
+        required: true
+
+      - id: description
+        label: 项目描述
+        type: text
+        instruction: 简要描述项目的作用和特点
+        required: true
+
+      - id: tech
+        label: 技术栈
+        type: text
+        instruction: 关键技术、框架、架构模式等关键词，用逗号分隔
+        required: true
+
+  - id: strict-rules
+    title: 严格遵循的规则
+    type: numbered-list
+    position: before-document-title
+    instruction: |
+      定义项目的强制性规则，违反将导致代码审查不通过。
+      每条规则应包含：规则内容（加粗）+ 简要说明
+    template: |
+      **严格遵循的规则**
+
+      > 以下规则是**强制性**的，违反将导致代码审查不通过：
+
+      1. **{{rule_1_title}}** - {{rule_1_description}}
+      2. **{{rule_2_title}}** - {{rule_2_description}}
+      3. **{{rule_3_title}}** - {{rule_3_description}}
+    elicit: true
+    owner: architect
+    editors: [architect]
+
+  - id: project-vision
+    title: 项目愿景
+    type: paragraph
+    instruction: |
+      描述项目的目标、定位和价值：
+      - 项目要解决什么问题
+      - 为什么选择这些技术方案
+      - 项目的长期规划和设计考虑
+      - 面向的用户群体和使用场景
+    elicit: true
+    owner: architect
+    editors: [architect, scrum-master]
+
+  - id: technical-decisions
+    title: 关键技术决策
+    type: table
+    columns: [决策项, 选型, 约束类型, 理由说明]
+    instruction: |
+      记录项目的重要技术选型和架构决策。
+      约束类型包括：技术限制、性能约束、团队规范等
+      这部分用于承载架构职责，避免后续质疑或推翻已验证的技术决策
+    template: |
+      | 决策项 | 选型 | 约束类型 | 理由说明 |
+      |--------|------|----------|----------|
+      | {{decision_1_item}} | {{decision_1_choice}} | {{decision_1_type}} | {{decision_1_reason}} |
+    elicit: true
+    owner: architect
+    editors: [architect]
+
+  - id: project-structure
+    title: 项目结构
+    instruction: |
+      展示项目的目录结构和关键文件说明：
+      - 使用代码块展示目录树（层次不要太多，只展示关键目录）
+      - 用表格说明关键文件/目录的作用
+      - 不包含不重要的文件
+    owner: architect
+    editors: [architect, dev-agent]
+    sections:
+      - id: directory-tree
+        title: 目录结构
+        type: code-block
+        language: text
+        instruction: 展示项目的目录树结构
+        elicit: true
+
+      - id: key-files
+        title: 关键文件作用
+        type: table
+        columns: [文件/目录, 作用]
+        instruction: 说明关键文件和目录的作用
+        elicit: true
+
+  - id: dependencies
+    title: 依赖库清单
+    type: composite
+    instruction: |
+      ⚠️ **重要**: 编写代码过程中**不得超出**这里提到的依赖范围。如需使用新库，必须获得用户同意并更新此文件。
+    owner: architect
+    editors: [architect, dev-agent]
+    sections:
+      - id: current-dependencies
+        title: 当前依赖
+        type: table
+        columns: [库名称, 版本, 功能简述]
+        instruction: 列出项目当前使用的所有依赖库
+        elicit: true
+
+      - id: new-dependencies
+        title: 新增库（需用户批准）
+        type: table
+        columns: [库名称, 版本, 功能简述, 批准日期]
+        instruction: 记录在开发过程中新增的依赖库
+        default: |
+          | 库名称 | 版本 | 功能简述 | 批准日期 |
+          |--------|------|----------|----------|
+          | - | - | - | - |
+        editors: [architect, dev-agent]
+
+  - id: common-commands
+    title: 常用命令
+    type: table
+    columns: [命令, 功能]
+    instruction: |
+      列出项目开发、测试、构建过程中的关键命令。
+      重点关注：编译、打包、发布、运行、格式化等必要命令。
+      这些命令用于让AI知道如何测试和使用项目。
+      只添加最关键的命令和用户指定要添加的经过测试能用的命令。
+    template: |
+      | 命令 | 功能 |
+      |------|------|
+      | {{command_1}} | {{command_1_desc}} |
+      | {{command_2}} | {{command_2_desc}} |
+    elicit: true
+    owner: architect
+    editors: [architect, dev-agent]

@@ -1,0 +1,1 @@
+首先生成brief，用 PROJECT_SPEC和CODE_SPEC两个，这两个可以帮我保证生成质量的约束性

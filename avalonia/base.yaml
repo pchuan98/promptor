@@ -1,0 +1,7 @@
+# Always need to read
+author: chuan
+time: 2025.10.22
+
+global:
+  output-language: en-us # Default document output language
+  output-dir: docs-ai

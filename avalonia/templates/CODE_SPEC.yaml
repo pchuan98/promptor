@@ -1,0 +1,220 @@
+template:
+  id: code-spec-template-v1
+  name: 代码规范文档
+  version: 1.0
+  output:
+    format: markdown
+    filename: code-spec.md
+    title: "{{project_name}} 代码规范文档"
+
+agent_config:
+  editable_sections:
+    - 元信息
+    - 严格遵循的规则
+    - 项目结构
+    - 架构约束
+    - 命名规范
+    - 编码规范
+    - Avalonia特定规范
+    - 代码注释规范
+    - 数据持久化规范
+    - 构建发布规范
+    - 测试规范
+    - 代码审查规范
+
+sections:
+  - id: metadata
+    title: 元信息
+    type: frontmatter
+    instruction: 项目基本元信息
+    owner: architect
+    editors: [architect]
+    fields:
+      - id: name
+        label: 项目名称
+        type: text
+        required: true
+
+      - id: version
+        label: 版本号
+        type: text
+        default: "v1.0"
+        required: true
+
+      - id: description
+        label: 项目描述
+        type: text
+        required: true
+
+      - id: tech
+        label: 技术栈
+        type: text
+        instruction: 关键技术、平台等，如：Avalonia, MVVM, Windows/macOS/Linux
+        required: true
+
+  - id: strict-rules
+    title: 严格遵循的规则
+    type: numbered-list
+    position: before-document-title
+    instruction: 强制性编码规则，违反将导致代码审查不通过
+    template: |
+      **严格遵循的规则**
+
+      > 以下规则是**强制性**的，违反将导致代码审查不通过：
+
+      1. **{{rule_1}}**
+      2. **{{rule_2}}**
+      3. **{{rule_3}}**
+    owner: architect
+    editors: [architect]
+
+  - id: project-structure
+    title: 项目结构
+    instruction: 代码目录结构和关键文件职责
+    owner: architect
+    editors: [architect, dev-agent]
+    sections:
+      - id: key-directories
+        title: 关键目录作用
+        type: table
+        columns: [目录/文件, 作用, 约束说明]
+        instruction: 关键目录/文件的职责边界和禁止操作
+        template: |
+          | 目录/文件 | 作用 | 约束说明 |
+          |-----------|------|----------|
+          | {{dir_1}} | {{dir_1_purpose}} | {{dir_1_constraint}} |
+
+  - id: architecture-constraints
+    title: 架构约束
+    instruction: 架构模式的职责边界和依赖关系约束
+    owner: architect
+    editors: [architect]
+    sections:
+      - id: mvvm-constraints
+        title: MVVM 模式约束
+        type: composite
+        instruction: View、ViewModel、Model 的职责划分和禁止操作
+
+      - id: dependency-injection
+        title: 依赖注入规范
+        type: composite
+        instruction: 生命周期定义、服务注册要求、构造函数注入规则
+
+  - id: naming-conventions
+    title: 命名规范
+    instruction: 各类元素的命名格式和约定
+    owner: architect
+    editors: [architect]
+    sections:
+      - id: csharp-naming
+        title: C# 命名约定
+        type: composite
+        instruction: 类、接口、方法、属性、字段、常量、枚举的命名规则和大小写约定
+
+      - id: avalonia-naming
+        title: Avalonia 特定命名
+        type: composite
+        instruction: Window、View、ViewModel、Command、Converter、Behavior、AttachedProperty 的命名规则
+
+  - id: coding-standards
+    title: 编码规范
+    instruction: 代码编写的格式和风格要求
+    owner: architect
+    editors: [architect]
+    sections:
+      - id: csharp-standards
+        title: C# 编码规范
+        type: composite
+        instruction: 格式、可空引用、变量声明、方法长度、嵌套层级、魔法数字处理
+
+      - id: xaml-standards
+        title: XAML 编码规范
+        type: composite
+        instruction: 属性顺序、绑定模式、命名空间组织、资源组织、代码格式
+
+      - id: error-handling
+        title: 错误处理规范
+        type: composite
+        instruction: 异常分类、处理策略、捕获抛出原则、日志记录要求
+
+      - id: logging-standards
+        title: 日志规范
+        type: composite
+        instruction: 日志级别使用场景、消息格式、敏感信息处理
+
+  - id: avalonia-specific
+    title: Avalonia 特定规范
+    type: dynamic-list
+    instruction: |
+      根据代码库实际使用的技术点，从以下方面选择性描述，不需要的直接忽略：
+      1. 控件使用规范 2. 数据绑定规范 3. 转换器规范 4. 样式和模板规范 
+      5. 附加属性规范 6. 行为规范 7. 事件处理规范 8. 异步操作规范 
+      9. 资源引用规范 10. 平台特定代码规范
+    owner: dev-agent
+    editors: [dev-agent]
+
+  - id: comment-standards
+    title: 代码注释规范
+    type: composite
+    instruction: XML 文档注释场景、内联注释原则、TODO/FIXME 标记、注释语言、注释密度
+    owner: architect
+    editors: [architect]
+
+  - id: data-persistence
+    title: 数据持久化规范
+    type: composite
+    optional: true
+    instruction: 数据库、文件存储、配置管理、缓存的使用规范
+    owner: architect
+    editors: [architect]
+    sections:
+      - id: orm-standards
+        title: ORM 使用规范
+        type: composite
+        instruction: 查询优化、N+1 问题、分页、事务管理、延迟/立即加载
+
+      - id: database-security
+        title: 数据库安全要求
+        type: composite
+        instruction: 参数化查询、连接字符串管理、敏感数据加密
+
+  - id: build-deployment
+    title: 构建发布规范
+    instruction: 构建配置和发布流程要求
+    owner: architect
+    editors: [architect]
+    sections:
+      - id: build-config
+        title: 发布配置要求
+        type: composite
+        instruction: 构建模式、目标框架、发布方式、平台特定配置
+
+      - id: deployment-process
+        title: 发布流程规范
+        type: composite
+        instruction: 发布前检查、版本号管理、发布步骤、验证要求
+
+  - id: testing-standards
+    title: 测试规范
+    type: composite
+    optional: true
+    instruction: 测试类型分布、框架选择、覆盖率要求、命名约定、AAA 模式、隔离性和数据清理
+    owner: architect
+    editors: [architect]
+    sections:
+      - id: test-strategy
+        title: 测试策略
+        type: composite
+        instruction: 单元/集成测试范围、测试框架、覆盖率要求
+
+      - id: test-writing
+        title: 测试编写规范
+        type: composite
+        instruction: 命名约定、AAA 模式、隔离性、数据清理
+
+  - id: code-review
+    title: 代码审查规范
+    type: composite
+    instruction: 审查维度：功能正确性、代码质量、安全性、性能
+    owner: architect
+    editors: [architect]

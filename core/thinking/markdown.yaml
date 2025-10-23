@@ -1,0 +1,126 @@
+template:
+  id: brainstorm-results-v1
+  name: Brainstorming Session Results
+  version: 1.0
+  output:
+    format: markdown
+    filename: brainstorm-session-{date}.md
+    title: Brainstorming Session Results
+
+metadata:
+  date: "{date}"
+  facilitator: "{agent_name}"
+  participant: "{user_name}"
+
+sections:
+  - id: exec_summary
+    title: Executive Summary
+    fields:
+      - topic: "{session_topic}"
+      - goals: "{stated_goals}"
+      - techniques: "{techniques_list}"
+      - total_ideas: "{total_ideas}"
+      - themes:
+          type: list
+          items: "{theme}"
+
+  - id: technique_sessions
+    title: Technique Sessions
+    type: repeatable
+    template:
+      heading: "{technique_name} - {duration}"
+      fields:
+        - desc: "{technique_description}"
+        - ideas:
+            type: numbered_list
+            items: "{idea}"
+        - insights:
+            type: bullet_list
+            items: "{insight}"
+        - connections:
+            type: bullet_list
+            items: "{connection}"
+
+  - id: categorization
+    title: Idea Categorization
+    subsections:
+      - id: immediate
+        title: Immediate Opportunities
+        subtitle: Ideas ready to implement now
+        type: repeatable
+        fields:
+          - name: "{idea_name}"
+          - desc: "{description}"
+          - why_immediate: "{rationale}"
+          - resources: "{requirements}"
+
+      - id: future
+        title: Future Innovations
+        subtitle: Ideas requiring development/research
+        type: repeatable
+        fields:
+          - name: "{idea_name}"
+          - desc: "{description}"
+          - dev_needed: "{development_needed}"
+          - timeline: "{timeline}"
+
+      - id: moonshots
+        title: Moonshots
+        subtitle: Ambitious, transformative concepts
+        type: repeatable
+        fields:
+          - name: "{idea_name}"
+          - desc: "{description}"
+          - potential: "{potential}"
+          - challenges: "{challenges}"
+
+      - id: insights
+        title: Insights & Learnings
+        subtitle: Key realizations from the session
+        type: repeatable
+        format: "- {insight}: {description_and_implications}"
+
+  - id: action_plan
+    title: Action Planning
+    subsections:
+      - id: top_priorities
+        title: Top 3 Priority Ideas
+        type: repeatable
+        max_items: 3
+        fields:
+          - priority: "#{n}"
+          - name: "{idea_name}"
+          - rationale: "{rationale}"
+          - next_steps: "{next_steps}"
+          - resources: "{resources}"
+          - timeline: "{timeline}"
+
+  - id: reflection
+    title: Reflection & Follow-up
+    subsections:
+      - id: worked_well
+        title: What Worked Well
+        type: bullet_list
+        items: "{aspect}"
+
+      - id: explore
+        title: Areas for Further Exploration
+        type: bullet_list
+        format: "{area}: {reason}"
+
+      - id: recommend
+        title: Recommended Follow-up Techniques
+        type: bullet_list
+        format: "{technique}: {reason}"
+
+      - id: questions
+        title: Questions That Emerged
+        type: bullet_list
+        items: "{question}"
+
+      - id: next_session
+        title: Next Session Planning
+        fields:
+          - suggested_topics: "{followup_topics}"
+          - timeframe: "{timeframe}"
+          - preparation: "{preparation}"

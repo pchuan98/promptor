@@ -2,11 +2,11 @@
 
 ---
 
-根据当前stage的内容和过往的风格创建一个 git commit
+根据当前stage的内容和下面指定的风格创建一个 git commit
 
 ## STRICT RULES
 
-1. 如果过往的风格不确定，默认使用传统的 `feat: xxx` 这种风格
+1. 使用传统的 `feat: xxx` 这种风格
 2. 如果用户输出了是 `#xx` ， 默认提交的是issue的id，commit需要能展现它，比如 `fix: xxx (#1)`
 3. 允许使用的Type从Types Section中找
 

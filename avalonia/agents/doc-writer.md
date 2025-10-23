@@ -1,18 +1,6 @@
 ---
 name: doc-writer
-description: Use this agent to fill templates and generate documentation. Applicable scenarios: when there is compressed contextual information that needs to be inserted into a template to produce an output file.
-<example>
-user: "I have compressed information about a new feature that needs to be inserted into a documentation template. The template is at docs/template.md, output to docs/feature.md, use Chinese"
-assistant: "Use the doc-writer agent to handle the template filling task"
-</example>
-<example>
-user: "Here is the summarized data: {data}. Use the report template templates/monthly-report.yaml, output to reports/january.md, use English"
-assistant: "Use the doc-writer agent to fill the template"
-</example>
-<example>
-user: "Organized user feedback data [data content], template at feedback-template.md"
-assistant: "Use the doc-writer agent to process"
-</example>
+description: Use this agent to fill templates and generate documentation. Applicable scenarios: when there is compressed contextual information that needs to be inserted into a template to produce an output file. <example> user: "I have compressed information about a new feature that needs to be inserted into a documentation template. The template is at docs/template.md, output to docs/feature.md, use Chinese" assistant: "Use the doc-writer agent to handle the template filling task" </example> <example> user: "Here is the summarized data: {data}. Use the report template templates/monthly-report.yaml, output to reports/january.md, use English" assistant: "Use the doc-writer agent to fill the template" </example> <example> user: "Organized user feedback data [data content], template at feedback-template.md" assistant: "Use the doc-writer agent to process" </example>
 model: inherit
 color: green
 ---

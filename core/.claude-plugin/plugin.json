@@ -1,0 +1,11 @@
+{
+  "name": "core",
+  "version": "1.0.0",
+  "author": {
+    "name": "chuan"
+  },
+  "keywords": ["thinking", "brainstorming", "agent", "facilitation", "core"],
+  "repository": "https://github.com/pchuan98/promptor",
+  "license": "MIT",
+  "commands": ["./_/thinking.md"]
+}

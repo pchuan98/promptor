@@ -1,0 +1,33 @@
+{
+  "name": "chuan",
+  "owner": {
+    "name": "chuan",
+    "email": "haeer98@outlook.com"
+  },
+  "metadata": {
+    "description": "Personal Claude Code plugin marketplace with core thinking agents and development utilities",
+    "version": "1.0.0"
+  },
+  "plugins": [{
+      "name": "core",
+      "source": "./core",
+      "version": "1.0.0",
+      "category": "essential",
+      "keywords": ["think"]
+    },
+    {
+      "name": "common",
+      "source": "./common",
+      "version": "1.0.0",
+      "category": "essential",
+      "keywords": ["utils"]
+    },
+    {
+      "name": "avalonia",
+      "source": "./avalonia",
+      "version": "1.0.0",
+      "category": "framework",
+      "keywords": ["avalonia"]
+    }
+  ]
+}

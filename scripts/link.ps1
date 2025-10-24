@@ -10,8 +10,8 @@ $linkMappings = @{
     # "common\config\settings.json" = ".claude\config\settings.json"
 }
 
-# 获取脚本所在目录（项目根目录）
-$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+# 获取项目根目录（脚本所在目录的上一级目录）
+$scriptDir = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 
 Write-Host "`n=== 符号链接创建工具 ===" -ForegroundColor Cyan
 Write-Host "项目根目录: $scriptDir`n" -ForegroundColor Gray

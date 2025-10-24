@@ -1,2 +1,4 @@
-.claude/
 .vscode/
+
+# link
+.claude/commands/commit.md

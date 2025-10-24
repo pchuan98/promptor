@@ -1,0 +1,10 @@
+{
+  "name": "avalonia",
+  "version": "1.0.0",
+  "author": {
+    "name": "chuan"
+  },
+  "keywords": ["avalonia"],
+  "repository": "https://github.com/pchuan98/promptor",
+  "license": "MIT"
+}

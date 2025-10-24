@@ -6,6 +6,18 @@
 
 Promptor 提供结构化的方式来管理跨项目的 AI 提示词、命令和上下文知识。通过符号链接机制共享通用资源，同时维护项目特定配置。
 
+## 安装
+
+通过 GitHub（推荐）：
+
+```shell
+/plugin marketplace add pchuan98/promptor
+
+/plugin install core@chuan
+/plugin install common@chuan
+/plugin install avalonia@chuan
+```
+
 ## 架构
 
 框架由三个核心模块组成：

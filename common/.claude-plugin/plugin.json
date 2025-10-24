@@ -1,0 +1,10 @@
+{
+  "name": "common",
+  "version": "1.0.0",
+  "author": {
+    "name": "chuan"
+  },
+  "keywords": ["commit", "utilities"],
+  "repository": "https://github.com/pchuan98/promptor",
+  "license": "MIT"
+}

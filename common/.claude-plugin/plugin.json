@@ -5,6 +5,5 @@
     "name": "chuan"
   },
   "keywords": ["commit", "utilities"],
-  "repository": "https://github.com/pchuan98/promptor",
-  "license": "MIT"
+  "repository": "https://github.com/pchuan98/promptor"
 }

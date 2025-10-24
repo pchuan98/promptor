@@ -6,6 +6,5 @@
   },
   "keywords": ["thinking", "brainstorming", "agent", "facilitation", "core"],
   "repository": "https://github.com/pchuan98/promptor",
-  "license": "MIT",
   "commands": ["./_/thinking.md"]
 }

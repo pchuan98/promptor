@@ -1,7 +1,6 @@
 ---
 command: prd
 version: 1.0
-ROOT: $HOME\.claude\plugins\marketplaces\promptor\avalonia
 ---
 
 # /prd <PROJECT_SCOPE>
@@ -12,6 +11,7 @@ ROOT: $HOME\.claude\plugins\marketplaces\promptor\avalonia
 
 - 不要使用工具 AskUserQuestion
 - S5阶段必须并行启用多个Agent加速文档的生成和创建
+- `AVALONIA_ROOT` 的地址在 `$HOME\.claude\plugins\marketplaces\chuan\avalonia`
 
 ## Context
 
@@ -26,13 +26,13 @@ ROOT: $HOME\.claude\plugins\marketplaces\promptor\avalonia
 ## Workflow
 
 S1. 阅读全局配置文件（位于 avalonia 插件目录）
-   - 文件路径: ${ROOT}/base.yaml
+   - 文件路径: ${AVALONIA_ROOT}/base.yaml
    1. 获取语言信息
    2. 获取输出文档默认地址
    3. 确认上面的信息是否需要修改
 S2. 阅读模板文件（位于 avalonia 插件目录）
-   1. ${ROOT}/templates/PROJECT_SPEC.yaml
-   2. ${ROOT}/templates/CODE_SPEC.yaml
+   1. ${AVALONIA_ROOT}/templates/PROJECT_SPEC.yaml
+   2. ${AVALONIA_ROOT}/templates/CODE_SPEC.yaml
 S3. 询问是否启用YOLO模式
 S4. IF NOT YOLO MODE
      LOOP (模板文件每个子模块) # 每个loop阶段只有一个子模块处于激活，不会同时及或多个

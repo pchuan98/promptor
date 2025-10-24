@@ -11,7 +11,7 @@ Promptor 提供结构化的方式来管理跨项目的 AI 提示词、命令和�
 通过 GitHub（推荐）：
 
 ```shell
-/plugin marketplace add pchuan98/promptor
+/plugin marketplace add https://github.com/pchuan98/promptor
 
 /plugin install core@chuan
 /plugin install common@chuan

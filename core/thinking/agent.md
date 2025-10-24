@@ -1,6 +1,5 @@
 ---
 version: 1.0
-author: chuan
 time: 2025.10.21
 ---
 

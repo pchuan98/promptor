@@ -1,3 +1,9 @@
+---
+command: prd
+version: 1.0
+ROOT: $HOME\.claude\plugins\marketplaces\promptor\avalonia
+---
+
 # /prd <PROJECT_SCOPE>
 
 ---
@@ -20,13 +26,13 @@
 ## Workflow
 
 S1. 阅读全局配置文件（位于 avalonia 插件目录）
-   - 文件路径: ${CLAUDE_PLUGIN_ROOT}/base.yaml
+   - 文件路径: ${ROOT}/base.yaml
    1. 获取语言信息
    2. 获取输出文档默认地址
    3. 确认上面的信息是否需要修改
 S2. 阅读模板文件（位于 avalonia 插件目录）
-   1. ${CLAUDE_PLUGIN_ROOT}/templates/PROJECT_SPEC.yaml
-   2. ${CLAUDE_PLUGIN_ROOT}/templates/CODE_SPEC.yaml
+   1. ${ROOT}/templates/PROJECT_SPEC.yaml
+   2. ${ROOT}/templates/CODE_SPEC.yaml
 S3. 询问是否启用YOLO模式
 S4. IF NOT YOLO MODE
      LOOP (模板文件每个子模块) # 每个loop阶段只有一个子模块处于激活，不会同时及或多个
@@ -49,4 +55,3 @@ S5. 在模板的必要信息完全拥有后，调用 agent doc-writer 来完成�
 1. 文档输出的文件夹地址是 {output-dir}/prd
 2. 模板 PROJECT_SPEC 输出的文件名为 project.md
 3. 模板 CODE_SPEC 输出的文件名为 code.md
-4. CLAUDE_PLUGIN_ROOT的位置是 `$HOME\.claude\plugins\marketplaces\promptor\avalonia`
